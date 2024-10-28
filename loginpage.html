@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20240715/pngtree-lock-icon-for-online-safety-digital-data-network-security-background-of-image_16003697.jpg'); /* Background image for the entire page */
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 0.4em;
+        }
+        #login-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: white; /* Background color for the container */
+            padding: 20px; /* Padding inside the container */
+            border-radius: 8px; /* Rounded corners for the container */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Box shadow for a 3D effect */
+        }
+        .message {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        button {
+            background-color: #333;
+            color: white;
+            padding: 5px 10px; /* Reduced padding for smaller buttons */
+            border: none;
+            cursor: pointer;
+            font-size: 14px; /* Smaller font size */
+            width: 100%;
+            margin-bottom: 10px;
+            border-radius: 4px; /* Rounded button corners */
+        }
+        button:hover {
+            background-color: blue;
+        }
+        .fieldset-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .text {
+            font-size: 10px;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="fieldset-wrapper">
+    <fieldset>
+    <div id="login-container">
+        
+       <header>
+        <div class="container">
+      
+        
+      
+      <div class="text">
+        <h1>VISIOLOCK</h1>
+      </div>
+    </div>
+     </header>
+     <img src="C:\Users\varun\Downloads\finalprojectlogo2.png" class="center">
+
+
+    
+        <button onclick="runApp('new_user')">REGISTER</button>
+           
+    </div>
+
+   <script>
+        function runApp(type) {
+            fetch(`http://localhost:5000/run/${type}`)
+                .then(response => response.text())
+                .then(data => alert(data))
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</fieldset>
+</body>
+</html>

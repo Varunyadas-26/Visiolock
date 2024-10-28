@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visiolock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20240715/pngtree-lock-icon-for-online-safety-digital-data-network-security-background-of-image_16003697.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 0.4em;
+        }
+        #login-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: none; /* Hide initially */
+        }
+        .message {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        button {
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            width: 100%;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: blue;
+        }
+        .fieldset-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .text {
+            font-size: 10px;
+            padding-left: 20px;
+        }
+
+        /* Splash screen styles */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            background-color: transparent; /* Transparent background */
+            transition: opacity 1s ease; /* Smooth transition */
+        }
+        #splash-screen img {
+            width: 20%;
+        }
+        #splash-screen.hidden {
+            opacity: 0;
+            pointer-events: none; /* Ensures no interaction during transition */
+        }
+    </style>
+</head>
+<body>
+    <!-- Splash screen -->
+    <div id="splash-screen">
+        <img src="C:\Users\varun\Downloads\finalprojectlogo2.png" alt="Visiolock Logo">
+    </div>
+
+    <!-- Main content -->
+    <div class="fieldset-wrapper">
+        <fieldset>
+            <div id="login-container">
+                <header>
+                    <div class="container">
+                        <div class="text">
+                            <h1>VISIOLOCK</h1>
+                        </div>
+                    </div>
+                </header>
+                <img src="C:\Users\varun\Downloads\finalprojectlogo2.png" class="center" alt="Visiolock Logo">
+                <div class="message"><b>Welcome To Visiolock !</b></div>
+                <button onclick="runApp('admin')">ADMIN</button>
+                <a href="C:\Users\varun\OneDrive\Desktop\facerecogdoor\loginpage.html"><button>NEW USER</button></a>
+            </div>
+        </fieldset>
+    </div>
+
+    <script>
+        // Function to run the admin app
+        function runApp(type) {
+            fetch(`http://localhost:5000/run/${type}`)
+                .then(response => response.text())
+                .then(data => alert(data))
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Splash screen timeout and transition
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('splash-screen').classList.add('hidden'); // Fade out splash screen
+                document.getElementById('login-container').style.display = 'block'; // Show login container
+            }, 1500); // 2000 milliseconds = 2 seconds
+        };
+    </script>
+</body>
+</html>
