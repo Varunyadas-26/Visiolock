@@ -1,0 +1,15 @@
+- name: Deploy VisioLock App
+  hosts: all
+  become: yes
+  tasks:
+    - name: Copy files
+      copy:
+        src: .
+        dest: /opt/visiolock
+
+    - name: Install Python packages
+      pip:
+        requirements: /opt/visiolock/requirements.txt
+
+    - name: Run server
+      shell: python3 /opt/visiolock/server.py
